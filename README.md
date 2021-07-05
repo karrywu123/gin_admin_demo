@@ -17,10 +17,15 @@ golang > 1.8
 |--logs // 日志存放目录
 
 |--middleware //中间件
+
 |--models //Gorm中的model类
+
 |--router //自定义路由目录
+
 |--statics //css js等静态文件目录
+
 |--uploadfile //上传文件目录
+
 |--views //视图模板目录
 
 分页
@@ -32,12 +37,14 @@ adminUserData := comment.PageOperation(c, adminDb, 1, &adminUserList)
 日志
 自定义日志 在 comment/loggers 目录下新建logger
 参考 userlog.go 文件
+
 调用自定义的的logger写日志
 loggers.UserLogger.Info("无法获取网址",
 zap.String("url", "http://www.baidu.com"),
 zap.Int("attempt", 3),
 zap.Duration("backoff", time.Second),)
 数据库
+
 models下定义的文件均需要实现 TableName() string 方法，并将实现该结构体的指针写入到 GetModels 方法中
 
 func GetModels() []interface{} {
@@ -46,6 +53,7 @@ func GetModels() []interface{} {
 		&AdminGroup{},
 	}
 }
+
 数据库迁移,在 cli\cmd 执行命令行工具
 
 go run ginadmin-cli.go db migrate
