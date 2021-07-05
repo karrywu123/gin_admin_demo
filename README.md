@@ -5,6 +5,9 @@ gin_admin_demo
 依赖
 golang > 1.8
 
+
+运行 go run main.go访问地址 http://localhost:端口地址/admin/login。默认账户：admin 密码：111111
+
 项目目录
 |--api  // Api接口控制器
 
