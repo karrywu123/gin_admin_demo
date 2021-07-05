@@ -34,7 +34,7 @@ func loadTemplates(templatesDir string) multitemplate.Renderer {
 		copy(layoutCopy, layouts)
 		files := append(layoutCopy, include)
 		dirSlice := strings.Split(include, comment.GetLine())
-		fileName := strings.Join(dirSlice[:], "")
+		fileName := strings.Join(dirSlice[:], "/")
 		r.AddFromFilesFuncs(fileName, template2.GlobalTemplateFun, files...)
 	}
 	return r
