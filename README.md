@@ -7,10 +7,15 @@ golang > 1.8
 
 项目目录
 |--api  // Api接口控制器
+
 |--comment // 封装的公共方法
+
 |--conf // 配置文件
+
 |--controllers // Admin控制器存在目录
+
 |--logs // 日志存放目录
+
 |--middleware //中间件
 |--models //Gorm中的model类
 |--router //自定义路由目录
