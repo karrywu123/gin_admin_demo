@@ -32,11 +32,15 @@ func GetLine() (line string) {
 	if sys == "linux" {
 		line = "/"
 	}
+	if sys == "darwin"{
+		line = "/"
+	}
 	if sys == "windows" {
 		line = "\\"
 	}
 	return
 }
+
 
 /**
 生成随机字符串
