@@ -32,40 +32,53 @@ golang > 1.8
 |--views //视图模板目录
 
 分页
+
 使用 comment/util.go 里面的 PageOperation 进行分页
+
 adminDb := models.Db.Table("admin_users").Select("nickname","username").Where("uid != ?", 1)
+
 adminUserData := comment.PageOperation(c, adminDb, 1, &adminUserList)
+
 在html中使用
+
 {{ .adminUserData.PageHtml }}
+
 日志
+
 自定义日志 在 comment/loggers 目录下新建logger
+
 参考 userlog.go 文件
 
 调用自定义的的logger写日志
+
 loggers.UserLogger.Info("无法获取网址",
+
 zap.String("url", "http://www.baidu.com"),
+
 zap.Int("attempt", 3),
+
 zap.Duration("backoff", time.Second),)
+
 数据库
 
 models下定义的文件均需要实现 TableName() string 方法，并将实现该结构体的指针写入到 GetModels 方法中
 
 func GetModels() []interface{} {
-	return []interface{}{
-		&AdminUsers{},
-		&AdminGroup{},
-	}
+    return []interface{}{
+       &AdminUsers{},&AdminGroup{},
+   }
 }
 
-数据库迁移,在 cli\cmd 执行命令行工具
 
-go run ginadmin-cli.go db migrate
 数据填充，需在相应目录下实现 FillData() 方法执行如下命令
 
-go run ginadmin-cli.go db seed
+
 定时任务
+
 在 comment/cron/cron.go 添加定时执行任务
+
 配置文件
+
 现在 conf/conf.go 添加配置项的 struct 类型，例如
 
 type AppConf struct {
